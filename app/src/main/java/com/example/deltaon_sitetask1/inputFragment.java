@@ -1,6 +1,5 @@
 package com.example.deltaon_sitetask1;
 
-import android.app.Notification;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -11,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class inputFragment extends Fragment {
@@ -46,6 +44,7 @@ public class inputFragment extends Fragment {
     private double val2;
     private char ACTION;
     private inputFragmentlistener listener;
+    String c="";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,68 +68,77 @@ public class inputFragment extends Fragment {
         mul=view.findViewById(R.id.mul);
         div=view.findViewById(R.id.div);
         equal=view.findViewById(R.id.equals);
-        input=view.findViewById(R.id.textView);
+        input=view.findViewById(R.id.edit);
         clear=view.findViewById(R.id.clear);
-
 
         one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"1");
+                listener.input(input.getText().toString()+"");
             }
         });
         two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"2");
+                listener.input(input.getText().toString()+"");
             }
         });
         three.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"3");
+                listener.input(input.getText().toString()+"");
             }
         });
         four.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"4");
+                listener.input(input.getText().toString()+"");
             }
         });
         five.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"5");
+                listener.input(input.getText().toString()+"");
             }
         });
         six.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"6");
+                listener.input(input.getText().toString()+"");
             }
         });
         seven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"7");
+                listener.input(input.getText().toString()+"");
             }
         });
         eight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"8");
+                listener.input(input.getText().toString()+"");
             }
         });
         nine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"9");
+                listener.input(input.getText().toString()+"");
             }
         });
         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"0");
+                listener.input(input.getText().toString()+"");
             }
         });
 
@@ -139,7 +147,7 @@ public class inputFragment extends Fragment {
             public void onClick(View v) {
                 calculate();
                 ACTION=ADD;
-                result.setText(String.valueOf(val1)+"+");
+                listener.input(val1 +"+");
                 input.setText(null);
             }
         });
@@ -149,7 +157,7 @@ public class inputFragment extends Fragment {
             public void onClick(View v) {
                 calculate();
                 ACTION=SUB;
-                result.setText(String.valueOf(val1)+"-");
+                listener.input(val1 +"-");
                 input.setText(null);
             }
         });
@@ -159,7 +167,7 @@ public class inputFragment extends Fragment {
             public void onClick(View v) {
                 calculate();
                 ACTION=MUL;
-                result.setText(String.valueOf(val1)+"*");
+                listener.input(val1 +"*");
                 input.setText(null);
             }
         });
@@ -169,7 +177,7 @@ public class inputFragment extends Fragment {
             public void onClick(View v) {
                 calculate();
                 ACTION=DIV;
-                result.setText(String.valueOf(val1)+"/");
+                listener.input(val1 +"/");
                 input.setText(null);
             }
         });
@@ -178,7 +186,7 @@ public class inputFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 calculate();
-                result.setText(result.getText().toString()+String.valueOf(val2)+"="+String.valueOf(val1));
+                listener.input(String.valueOf(val1));
                 input.setText(null);
             }
         });
@@ -188,12 +196,13 @@ public class inputFragment extends Fragment {
             public void onClick(View v) {
                 val1=Double.NaN;
                 val2=Double.NaN;
-                input.setText(null);
-                result.setText(null);
+                listener.input("");
             }
         });
 
         return view;
+
+
     }
 
     public void calculate(){
@@ -215,9 +224,11 @@ public class inputFragment extends Fragment {
 
         }
 
-       else{
+        else{
             val1 = Double.parseDouble(input.getText().toString());}
     }
+
+
 
     @Override
     public void onAttach(Context context) {
@@ -237,7 +248,7 @@ public class inputFragment extends Fragment {
     }
     public interface inputFragmentlistener
     {
-        void input(double answer);
+        String input(String answer);
     }
 
 }

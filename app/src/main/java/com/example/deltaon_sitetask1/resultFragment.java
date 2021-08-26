@@ -28,8 +28,8 @@ public class resultFragment extends Fragment {
         return view;
     }
 
-    public void textview(double val){
-        result.setText((int) val);
+    public void textview(String val){
+        result.setText(val);
     }
 
 }
